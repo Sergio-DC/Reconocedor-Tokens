@@ -23,8 +23,6 @@ longitud = len(archivo) 	# longitud del archivo
 estado = 0                      # estado inicial
 token = ''                      # token inicial
 
-print "Longitud simbolos: ", len(simbolos)
-
 mapa = {}
 # Creamos un array(llamado mapa) que clasifica/separa los 'digitos' asignandoles un 0
 # Al alfabeto y underscore
@@ -54,12 +52,17 @@ while p < longitud :
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
         p = p - 1
-    elif estado == 3:
+    elif estado == 3: #Suma
         token += c
         print("token: ", token)
         token = ''
         estado = 0
     elif estado == 4:
+        token += c
+        print("token: ", token)
+        token = ''
+        estado = 0
+    elif estado == 5: # espacios en blanco
         estado = 0
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
         token += c
