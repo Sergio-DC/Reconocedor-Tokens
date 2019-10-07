@@ -57,12 +57,22 @@ while p < longitud :
         print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 4:
+    elif estado == 4: #Resta
         token += c
         print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 5: # espacios en blanco
+    elif estado == 5: #Mult
+        token += c
+        print("token: ", token)
+        token = ''
+        estado = 0 
+    elif estado == 6: #Division
+        token += c
+        print("token: ", token)
+        token = ''
+        estado = 0
+    elif estado == 7: # espacios en blanco
         estado = 0
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
         token += c
