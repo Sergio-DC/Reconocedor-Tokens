@@ -77,6 +77,18 @@ while p < longitud :
             print("token: ", token)
         token = ''
         estado = 0
+    elif estado == 12:
+        if c != '\n':
+            token += c
+            print("token: ", token)
+        token = ''
+        estado = 0
+    elif estado == 13:
+        if c != '\n':
+            token += c
+            print("token: ", token)
+        token = ''
+        estado = 0
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
         token += c
     p+=1
