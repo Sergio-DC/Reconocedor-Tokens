@@ -3,8 +3,6 @@
 # 1: Otro Simbolo(blanco, salto de linea)
 import os
 
-print "Current Dir: ", os.getcwd() + "/matriz2.txt"
-
 mainFile = os.getcwd() + "/matriz2.txt"
 
 # Metodos
@@ -31,17 +29,6 @@ for i in range(len(simbolos)):
     for c in simbolos[i]:# recooremos primero digitos, luego alfabeto
         mapa[c]=i
 
-# for p in range(longitud):
-#     c = archivo[p] # Leemos cada caracter del archivo 'ejemplo.txt'
-#     estado = M[estado][mapa[c]]# Matriz que representa la funcion de transicion
-#     print("mapa: ", mapa[c])
-#     if estado == 2: # Estado de aceptacion de token
-#         print("token: ", token)
-#         token = '' # Limpiamos el token
-#         estado = 0 # Volvemos al estado inicial
-#         p = p - 1
-#     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
-#         token += c
 p = 0
 
 while p < longitud :
@@ -52,32 +39,39 @@ while p < longitud :
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
         p = p - 1
-    elif estado == 3: #Suma
+    elif estado == 4:#Punto
+        token += c
+        estado = estado - 1
+    elif estado == 5: # Mostramos el num real
+        if str(c).isdigit():
+            token += c
+        print("token: ", token)
+        token = ''
+        p -= 1
+        estado = 0
+    elif estado == 6: #Suma
         token += c
         print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 4: #Resta
+    elif estado == 7: #Resta
         token += c
         print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 5: #Mult
+    elif estado == 8: #Mult
         token += c
         print("token: ", token)
         token = ''
         estado = 0 
-    elif estado == 6: #Division
+    elif estado == 9: #Division
         token += c
         print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 7: # espacios en blanco
+    elif estado == 10: # espacios en blanco
         estado = 0
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
         token += c
     p+=1
-    
-
-    # El error se debe al token $ que no lo encuentra en el mapa
         
