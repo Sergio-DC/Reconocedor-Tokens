@@ -6,7 +6,6 @@ import os
 mainFile = os.getcwd() + "/matriz2.txt"
 
 # Metodos
-#next() # Lee una linea
 with open(mainFile) as f:
     simbolos = next(f).split(',')
     M = [[int(x) for x in line.split()] for line in f]
@@ -66,9 +65,12 @@ while p < longitud :
         estado = 0 
     elif estado == 9: #Division
         token += c
-        print("token: ", token)
-        token = ''
-        estado = 0
+        if archivo[p+1] == '/':
+            estado = 6
+        else:
+            print("token: ", token)
+            token = ''
+            estado = 0
     elif estado == 10: # espacios en blanco
         estado = 0
     elif estado == 11: # Igual/Asignacion
@@ -77,24 +79,34 @@ while p < longitud :
             print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 12:
+    elif estado == 12: # Parentesis izquierdo
         if c != '\n':
             token += c
             print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 13:
+    elif estado == 13: # Parentesis Derecho
         if c != '\n':
             token += c
             print("token: ", token)
         token = ''
         estado = 0
-    elif estado == 14:
+    elif estado == 14: #Auxiliar (Notacion Cientifica)
         token += c
         estado = 4
-    elif estado == 15:
+    elif estado == 15: #Auxiliar (Notacion Cientifica)
         token+=c
         estado = 5
+    elif estado == 16: # Comentario (Se entra por estado 9)
+        while p < len(archivo):
+            c = archivo[p]
+
+            if c != '\n' and c != '$':
+                token += c
+            else:
+                print("token: ", token)
+                token = ''
+            p += 1
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
         token += c
     p+=1
