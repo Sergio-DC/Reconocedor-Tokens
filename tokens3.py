@@ -30,12 +30,13 @@ for i in range(len(simbolos)):
         mapa[c]=i
 
 p = 0
+print("Token     Tipo")
 
 while p < longitud :
     c = archivo[p] # Leemos cada caracter del archivo 'ejemplo.txt'
     estado = M[estado][mapa[c]]# Matriz que representa la funcion de transicion
     if estado == 2: # Estado de aceptacion de token
-        print("token: ", token)
+        print("{}       Entero".format(token))
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
         p = p - 1
@@ -47,22 +48,22 @@ while p < longitud :
             token += c
         else:
             p -= 1
-        print("token: ", token)
+        print("{}       Real".format(token))
         token = ''
         estado = 0
     elif estado == 6: #Suma
         token += c
-        print("token: ", token)
+        print('{}       Suma'.format(token)) 
         token = ''
         estado = 0
     elif estado == 7: #Resta
         token += c
-        print("token: ", token)
+        print('{}       Resta'.format(token))
         token = ''
         estado = 0
     elif estado == 8: #Mult
         token += c
-        print("token: ", token)
+        print("{}       Multiplicacion".format(token))
         token = ''
         estado = 0 
     elif estado == 9: #Division
@@ -70,7 +71,7 @@ while p < longitud :
         if archivo[p+1] == '/':
             estado = 6
         else:
-            print("token: ", token)
+            print('{}       Division'.format(token))
             token = ''
             estado = 0
     elif estado == 10: # espacios en blanco
@@ -78,19 +79,19 @@ while p < longitud :
     elif estado == 11: # Igual/Asignacion
         if c != '\n':
             token += c
-            print("token: ", token)
+            print('{}       Asignacion'.format(token))
         token = ''
         estado = 0
     elif estado == 12: # Parentesis izquierdo
         if c != '\n':
             token += c
-            print("token: ", token)
+            print('{}       Parentesis que abre'.format(token))
         token = ''
         estado = 0
     elif estado == 13: # Parentesis Derecho
         if c != '\n':
             token += c
-            print("token: ", token)
+            print('{}       Parentesis que cierra'.format(token))
         token = ''
         estado = 0
     elif estado == 14: #Auxiliar (Notacion Cientifica)
@@ -106,7 +107,7 @@ while p < longitud :
             if c != '\n' and c != '$':
                 token += c
             else:
-                print("token: ", token)
+                print("{}       Comentario".format(token))
                 token = ''
                 estado = 0
                 break
@@ -117,10 +118,10 @@ while p < longitud :
         if c.isalpha() or c.isdigit() or c == '_':
             estado = 7
         else:
-            print("token: ", token)
+            print('{}       Variable'.format(token))
             estado = 0
             token = ''
-    elif estado == 18:
+    elif estado == 18:#Variable con mas de un caracter
         while p < len(archivo):
             c = archivo[p]
 
@@ -135,7 +136,7 @@ while p < longitud :
             p += 1
     elif estado == 19: #^
         token += c
-        print("token: ", token)
+        print('{}       Potencia'.format(token))
         token = ''
         estado = 0 
     elif estado == 20:
