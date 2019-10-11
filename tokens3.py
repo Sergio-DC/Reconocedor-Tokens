@@ -133,6 +133,11 @@ while p < longitud :
                 token = ''
                 break
             p += 1
+    elif estado == 19: #^
+        token += c
+        print("token: ", token)
+        token = ''
+        estado = 0 
     elif estado == 20:
         print("Error")
     elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
