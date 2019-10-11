@@ -30,19 +30,26 @@ for i in range(len(simbolos)):
         mapa[c]=i
 
 p = 0
+isScientificNotation = False
+
 print("Token     Tipo")
 
 while p < longitud :
     c = archivo[p] # Leemos cada caracter del archivo 'ejemplo.txt'
     estado = M[estado][mapa[c]]# Matriz que representa la funcion de transicion
     if estado == 2: # Estado de aceptacion de token
-        print("{}       Entero".format(token))
+        if isScientificNotation:
+            print("{}       Real".format(token))
+            isScientificNotation = False
+        else:
+            print("{}       Entero".format(token))
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
         p = p - 1
     elif estado == 4:#Punto
         token += c
         estado = estado - 1
+        isScientificNotation = True
     elif estado == 5: # Mostramos el num real
         if str(c).isdigit():
             token += c
