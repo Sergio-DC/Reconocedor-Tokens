@@ -2,6 +2,7 @@
 # 0: Digito
 # 1: Otro Simbolo(blanco, salto de linea)
 import os
+import sys
 
 mainFile = os.getcwd() + "/matriz2.txt"
 
@@ -29,6 +30,7 @@ for i in range(len(simbolos)):
         mapa[c]=i
 
 p = 0
+esLetra = False
 
 while p < longitud :
     c = archivo[p] # Leemos cada caracter del archivo 'ejemplo.txt'
@@ -37,16 +39,17 @@ while p < longitud :
         print("token: ", token)
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
-        p = p - 1
+        #p = p - 1
     elif estado == 4:#Punto
         token += c
         estado = estado - 1
     elif estado == 5: # Mostramos el num real
         if str(c).isdigit():
             token += c
+        else:
+            p -= 1
         print("token: ", token)
         token = ''
-        p -= 1
         estado = 0
     elif estado == 6: #Suma
         token += c
@@ -107,7 +110,32 @@ while p < longitud :
                 print("token: ", token)
                 token = ''
             p += 1
-    elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
+    elif estado == 17:
         token += c
+        c = archivo[p+1]
+        if c.isalpha() or c.isdigit() or c == '_':
+            estado = 7
+        else:
+            print("token: ", token)
+            estado = 0
+            token = ''
+    elif estado == 18:
+        while p < len(archivo):
+            c = archivo[p]
+
+            if c.isdigit() or c.isalpha() or c == '_':
+                token += c
+            else:
+                estado = 0
+                print("token: ", token)
+                p -= 1
+                token = ''
+                break
+            p += 1
+    elif estado == 20:
+        print("Error")
+    elif estado != 0:# Si el caracter es distinto del blanco lo concatenamos con el caracter anterior para formar un token
+        if c != '\n':
+            token += c
     p+=1
         
