@@ -38,7 +38,7 @@ while p < longitud :
         print("token: ", token)
         token = '' # Limpiamos el token
         estado = 0 # Volvemos al estado inicial
-        #p = p - 1
+        p = p - 1
     elif estado == 4:#Punto
         token += c
         estado = estado - 1
@@ -108,6 +108,8 @@ while p < longitud :
             else:
                 print("token: ", token)
                 token = ''
+                estado = 0
+                break
             p += 1
     elif estado == 17:
         token += c
