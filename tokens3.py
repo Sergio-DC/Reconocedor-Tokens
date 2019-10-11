@@ -30,7 +30,6 @@ for i in range(len(simbolos)):
         mapa[c]=i
 
 p = 0
-esLetra = False
 
 while p < longitud :
     c = archivo[p] # Leemos cada caracter del archivo 'ejemplo.txt'
