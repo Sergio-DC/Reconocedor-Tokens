@@ -1,6 +1,3 @@
-#Simbologia
-# 0: Digito
-# 1: Otro Simbolo(blanco, salto de linea)
 import os
 import sys
 
@@ -14,7 +11,7 @@ with open(mainFile) as f:
 #print(simbolos)
 #print(M)
 
-f = open('./ejemplo2.txt', 'r')
+f = open('./input.txt', 'r')
 archivo = f.read() 		# lee todo el archivo a tokenizar
 archivo += '$'                  # agregamos $ para representar EOF
 longitud = len(archivo) 	# longitud del archivo
@@ -136,7 +133,7 @@ while p < longitud :
                 token += c
             else:
                 estado = 0
-                print("token: ", token)
+                print("{}       Variable".format(token))
                 p -= 1
                 token = ''
                 break
