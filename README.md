@@ -35,7 +35,7 @@ Primero se diseño el AFD y a partir de este se lograron obtener las relaciones 
 para posteriormente implementar la matriz, algunos estados no conectan con el estado de error 20 en el diagrama del AFD
 esto con el fin de no saturar el diagrama de arcos pero en la tabla de transiciones se establecio.
 ## ¿Cómo se lee la matriz?
-Para leer la matriz me apoye en la implementación que realizo el profesor en clase.
+Para leer la matriz me apoye en la implementación que realizo el profesor Víctor Manuel de la Cueva Hernández en clase.
 
 Se guardaron los símbolos en una ED de tipo diccionario que se encuentran en la primera fila del archvio 'matriz2.txt'
 Y además se guardaron los valores de la matriz en una lista bidimensional
