@@ -1,7 +1,7 @@
 # Reconocedor de Tokens
 
 ## Archivos
-El proyecto esta compuesto por un script de python llamado 'tokens.py'
+El proyecto esta compuesto de un script python llamado 'tokens.py'
 y un archivo txt  llamado 'matriz2.txt' el cual tiene la matriz de transición.
 Además se adjunta un archivo para ingresar la expresiones artiméticas  llamado 
 'input.txt'.
